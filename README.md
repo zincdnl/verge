@@ -1,4 +1,4 @@
 verge
 =====
 
-learning couchdb
+learning couchdb more patient
