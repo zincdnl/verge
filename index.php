@@ -8,6 +8,10 @@ get('/', function($app) {
 get('/signup', function($app) {
 	$app->render('signup');
 });
+get('/say/:message', function($app) {
+	$app->set('message', $app->request('message'));
+	$app->render('home');
+});
 post('/signup', function($app) {
 	$app->set('message', 'Thanks for Signing Up ' .
 	$app->form('name') . '!');
