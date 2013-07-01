@@ -17,7 +17,7 @@ post('/signup', function($app) {
 	$user->type = 'user';
 	$user->name = $app->form('name');
 	$user->email = $app->form('email');
-	echo json_encode($user);
+/*	echo json_encode($user);
 	$curl = curl_init();
 // curl options
 	$options = array(
@@ -34,6 +34,8 @@ post('/signup', function($app) {
 	curl_setopt_array($curl, $options);
 	curl_exec($curl);
 	curl_close($curl);
+*/
+		$app->couch->post($user);
 	$app->set('message', 'Thanks for Signing Up ' .
 	$app->form('name') . '!');
 	$app->render('home');
