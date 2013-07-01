@@ -13,10 +13,16 @@ get('/say/:message', function($app) {
 	$app->render('home');
 });
 post('/signup', function($app) {
-	$user = new stdClass;
-	$user->type = 'user';
+//	$user = new stdClass;
+//	$user->type = 'user';
+	
+	$user = new User();
+
 	$user->name = $app->form('name');
 	$user->email = $app->form('email');
+	echo $user->name;
+	echo $user->email;
+	echo $user->type;
 /*	echo json_encode($user);
 	$curl = curl_init();
 // curl options
@@ -35,7 +41,9 @@ post('/signup', function($app) {
 	curl_exec($curl);
 	curl_close($curl);
 */
-		$app->couch->post($user);
+//		$app->couch->post($user);
+		$app->couch->post($user->to_json());
+
 	$app->set('message', 'Thanks for Signing Up ' .
 	$app->form('name') . '!');
 	$app->render('home');
